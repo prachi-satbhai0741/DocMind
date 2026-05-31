@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DocMind — Document Intelligence</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <span class="logo"> DocMind</span>
+    <a href="results.html" class="nav-link">View Extractions →</a>
+  </nav>
+
+  <main class="container">
+    <div class="hero">
+      <h1>Document Intelligence,<br/>Fully Serverless.</h1>
+      <p>Upload a PDF or image — DocMind extracts text, tables, and form fields using AWS Textract.</p>
+    </div>
+
+    <div class="upload-card" id="uploadCard">
+      <div class="drop-zone" id="dropZone">
+        <div class="drop-icon"></div>
+        <p class="drop-text">Drag & drop your file here</p>
+        <p class="drop-sub">PDF, JPG, PNG, TIFF — max 10 MB</p>
+        <label class="btn-upload" for="fileInput">Choose File</label>
+        <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png,.tiff" hidden />
+      </div>
+
+      <div class="file-preview" id="filePreview" style="display:none;">
+        <span class="file-icon"></span>
+        <span class="file-name" id="fileName"></span>
+        <button class="btn-clear" id="clearBtn"></button>
+      </div>
+
+      <button class="btn-submit" id="submitBtn" disabled>Extract Document</button>
+
+      <div class="status-bar" id="statusBar" style="display:none;">
+        <div class="spinner"></div>
+        <span id="statusText">Uploading to S3...</span>
+      </div>
+
+      <div class="success-bar" id="successBar" style="display:none;">
+         Extraction started!
+        <a href="results.html" id="resultLink">View Results →</a>
+      </div>
+
+      <div class="error-bar" id="errorBar" style="display:none;"></div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <span></span>
+        <h3>PDF Support</h3>
+        <p>Multi-page PDFs fully supported via Amazon Textract async processing.</p>
+      </div>
+      <div class="info-card">
+        <span></span>
+        <h3>Image OCR</h3>
+        <p>Scanned documents, forms, and receipts extracted with high accuracy.</p>
+      </div>
+      <div class="info-card">
+        <span></span>
+        <h3>Table Detection</h3>
+        <p>Tables are automatically detected and returned as structured rows.</p>
+      </div>
+      <div class="info-card">
+        <span></span>
+        <h3>Key-Value Pairs</h3>
+        <p>Form fields like Name, Date, Amount are extracted as labelled pairs.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Built with  on AWS · S3 · Lambda · Textract · DynamoDB</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

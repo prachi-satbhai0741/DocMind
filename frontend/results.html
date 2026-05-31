@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DocMind — Extraction Results</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo"> DocMind</a>
+    <span class="nav-link">Extractions</span>
+  </nav>
+
+  <main class="container">
+
+    <!-- Document List (left panel) -->
+    <div class="results-layout">
+      <aside class="doc-list" id="docList">
+        <h2>Your Documents</h2>
+        <div id="docItems">
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading documents...</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Extraction Detail (right panel) -->
+      <section class="doc-detail" id="docDetail">
+        <div class="empty-state" id="emptyState">
+          <p> Select a document to view its extraction</p>
+        </div>
+
+        <div id="extractionContent" style="display:none;">
+          <div class="detail-header">
+            <h2 id="detailFileName"></h2>
+            <span class="badge" id="detailStatus"></span>
+            <small id="detailDate"></small>
+          </div>
+
+          <!-- Tabs -->
+          <div class="tabs">
+            <button class="tab active" data-tab="text">Raw Text</button>
+            <button class="tab" data-tab="keyvalues">Key-Values</button>
+            <button class="tab" data-tab="tables">Tables</button>
+          </div>
+
+          <!-- Tab: Raw Text -->
+          <div class="tab-content active" id="tab-text">
+            <pre id="rawTextOutput"></pre>
+          </div>
+
+          <!-- Tab: Key-Values -->
+          <div class="tab-content" id="tab-keyvalues">
+            <table class="kv-table" id="kvTable">
+              <thead><tr><th>Field</th><th>Value</th></tr></thead>
+              <tbody id="kvBody"></tbody>
+            </table>
+            <p class="empty-tab" id="kvEmpty" style="display:none;">No key-value pairs detected.</p>
+          </div>
+
+          <!-- Tab: Tables -->
+          <div class="tab-content" id="tab-tables">
+            <div id="tablesOutput"></div>
+            <p class="empty-tab" id="tablesEmpty" style="display:none;">No tables detected.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Built with  on AWS · S3 · Lambda · Textract · DynamoDB</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
